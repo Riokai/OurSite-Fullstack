@@ -6,7 +6,7 @@ var request = require('supertest');
 
 describe('GET /api/things', function() {
 
-  it('should respond with JSON array', function(done) {
+  it('应该响应一个JSON数组', function(done) {
     request(app)
       .get('/api/things')
       .expect(200)

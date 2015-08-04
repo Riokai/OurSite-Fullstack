@@ -25,14 +25,14 @@ describe('User Model', function() {
     });
   });
 
-  it('should begin with no users', function(done) {
+  it('没有用户的开始', function(done) {
     User.find({}, function(err, users) {
       users.should.have.length(0);
       done();
     });
   });
 
-  it('should fail when saving a duplicate user', function(done) {
+  it('保存一个相同的用户应该失败', function(done) {
     user.save(function() {
       var userDup = new User(user);
       userDup.save(function(err) {
@@ -42,7 +42,7 @@ describe('User Model', function() {
     });
   });
 
-  it('should fail when saving without an email', function(done) {
+  it('保存一个没有邮箱的用户应该失败', function(done) {
     user.email = '';
     user.save(function(err) {
       should.exist(err);
@@ -50,11 +50,11 @@ describe('User Model', function() {
     });
   });
 
-  it("should authenticate user if password is valid", function() {
+  it("如果密码错误，用户应该被成功认证", function() {
     return user.authenticate('password').should.be.true;
   });
 
-  it("should not authenticate user if password is invalid", function() {
+  it("如果密码错误，用户不应该被认证", function() {
     return user.authenticate('blah').should.not.be.true;
   });
 });
