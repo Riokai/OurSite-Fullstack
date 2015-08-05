@@ -9,7 +9,7 @@ module.exports = function (grunt) {
     localConfig = {};
   }
 
-  // Load grunt tasks automatically, when needed
+  // 按需要自动加载Grunt Tasks
   require('jit-grunt')(grunt, {
     express: 'grunt-express-server',
     useminPrepare: 'grunt-usemin',

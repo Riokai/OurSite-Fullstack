@@ -25,7 +25,7 @@ describe('User Model', function() {
     });
   });
 
-  it('没有用户的开始', function(done) {
+  it('初始时用户数为0', function(done) {
     User.find({}, function(err, users) {
       users.should.have.length(0);
       done();
