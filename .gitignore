@@ -7,3 +7,6 @@ client/bower_components
 dist
 /server/config/local.env.js
 npm-debug.log
+deploy_all.sh
+deploy_client.sh
+deploy_server.sh
