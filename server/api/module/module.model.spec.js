@@ -4,7 +4,7 @@ var should = require('should');
 var app = require('../../app');
 var Module = require('./module.model');
 
-describe('Module Model', function() {
+describe('Model Module', function() {
   before(function(done) {
     Module.remove().exec().then(function() {
       done();
