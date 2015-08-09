@@ -1,0 +1,39 @@
+$section-width: 150px;
+$section-margin: 30px 50px;
+$section-font-size: 20px;
+
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.module {
+	background: url(/assets/images/bg/main.jpg) no-repeat;
+	background-size: cover;
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 0 6%;
+	}
+
+	li {
+		display: block;
+		width: $section-width;
+		height: $section-width;
+		line-height: $section-width;
+		border-radius: 50%;
+		text-align: center;
+		color: #fff;
+		margin: $section-margin;
+		font-size: $section-font-size;
+		cursor: pointer;
+
+		&:last-child {
+			background-color: #000;
+			color: #fff;
+		}
+	}
+}
