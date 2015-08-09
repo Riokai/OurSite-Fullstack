@@ -6,13 +6,14 @@ var crypto = require('crypto');
 
 var UserSchema = new Schema({
   name: String,
-  email: { type: String, lowercase: true },
+  nickname: String,
+  // email: { type: String, lowercase: true },
   role: {
     type: String,
     default: 'user'
   },
   hashedPassword: String,
-  provider: String,
+  // provider: String,
   salt: String
 });
 
@@ -55,11 +56,11 @@ UserSchema
  */
 
 // Validate empty email
-UserSchema
-  .path('email')
-  .validate(function(email) {
-    return email.length;
-  }, 'Email cannot be blank');
+// UserSchema
+//   .path('email')
+//   .validate(function(email) {
+//     return email.length;
+//   }, 'Email cannot be blank');
 
 // Validate empty password
 UserSchema

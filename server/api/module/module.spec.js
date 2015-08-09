@@ -7,17 +7,17 @@ var Module = require('./module.model');
 
 describe('API Module', function() {
 
-  // before(function(done) {
-  //   Module.remove().exec().then(function() {
-  //     done();
-  //   });
-  // });
+  before(function(done) {
+    Module.remove().exec().then(function() {
+      done();
+    });
+  });
 
-  // afterEach(function(done) {
-  //   Module.remove().exec().then(function() {
-  //     done();
-  //   });
-  // });
+  afterEach(function(done) {
+    Module.remove().exec().then(function() {
+      done();
+    });
+  });
 
   it('读取所有模块', function(done) {
     request(app)
