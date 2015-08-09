@@ -585,7 +585,7 @@ module.exports = function (grunt) {
       'autoprefixer',
       'express:dev',
       'wait',
-      'open',
+      // 'open',
       'watch'
     ]);
   });

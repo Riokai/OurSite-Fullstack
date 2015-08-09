@@ -1,7 +1,11 @@
 <div class="module" height-directive>
+	<div class="header">
+		
+	</div>
 	<div class="content">
 		<ul>
 			<li ng-repeat="module in modules"
+					ng-click="goPath(module.href)"
 					style="background-color:{{ module.color }}">
 				{{ module.name }}
 			</li>

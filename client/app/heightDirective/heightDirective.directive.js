@@ -13,6 +13,15 @@ angular.module('ourSiteApp')
         	// width: width,
         	minHeight: height
         });
+
+       	window.onresize = function() {
+       		height = document.documentElement.clientHeight;
+
+       		element.css({
+       			// width: width,
+       			minHeight: height
+       		});
+       	};
       }
     };
   });
