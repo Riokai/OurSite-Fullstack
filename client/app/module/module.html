@@ -1,6 +1,19 @@
 <div class="module" height-directive>
 	<div class="header">
-		
+		<div class="header-title">
+			<h2>我俩的小站</h2>
+		</div>
+		<div class="header-info">
+			<a href="" 
+				 ng-hide="isLoggedIn"
+				 ng-click="openModal('register')">注册</a>
+			<a href="" 
+				 ng-hide="isLoggedIn"
+				 ng-click="openModal('login')">登录</a>
+			<a href="" ng-show="isLoggedIn">欢迎你</a>
+			<a href="" ng-show="isLoggedIn">编辑</a>
+			<a href="" ng-show="isLoggedIn">退出</a>
+		</div>
 	</div>
 	<div class="content">
 		<ul>
@@ -13,3 +26,49 @@
 		</ul>
 	</div>
 </div>
+
+<script type="text/ng-template" id="userModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title">{{ modalTitle }}</h3>
+  </div>
+  <div class="modal-body">
+		<div class="form-group row">
+			<label class="col-md-2 control-label">用户名</label>
+			<div class="col-md-6">
+				<input type="text"
+				  		 class="form-control"
+				  		 ng-model="name" 
+				  		 autofocus />
+			</div>
+			<div class="col-md-4">
+				<span></span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="" class="col-md-2 control-label">密码</label>
+			<div class="col-md-6">
+				<input type="pass" 
+							 class="form-control"
+							 ng-model="pass" />
+			</div>
+			<div class="col-md-4">
+				<span></span>
+			</div>
+		</div>
+		<div class="form-group row" ng-show="isRegister">
+			<label for="" class="col-md-2 control-label">重复密码</label>
+			<div class="col-md-6">
+				<input type="password"
+							 class="form-control"
+							 ng-model="rePass" />
+			</div>
+			<div class="col-md-4">
+				<span></span>
+			</div>
+		</div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">提交</button>
+    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+  </div>
+</script>

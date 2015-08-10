@@ -1,5 +1,7 @@
-$section-width: 150px;
-$section-margin: 30px 50px;
+$header-height: 75px;
+
+$section-width: 180px;
+$section-margin: 30px;
 $section-font-size: 20px;
 
 
@@ -8,15 +10,43 @@ ul {
 	padding: 0;
 }
 
+.form-group {
+	label {
+		text-align: center;
+		height: 34px;
+		line-height: 34px;
+	}
+}
+
 .module {
 	background: url(/assets/images/bg/main.jpg) no-repeat;
 	background-size: cover;
+	padding: 0 6%;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 10px;
+
+		&-title, &-info {
+			height: $header-height;
+			line-height: $header-height;
+			color: #fff;
+		}
+
+		&-info a {
+			font-size: 20px;
+			color: #fff;
+			margin: 0 10px;
+			text-decoration: none;
+			outline: none;
+		}
+	}
 
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		padding: 0 6%;
+		justify-content: flex-start;
 	}
 
 	li {
@@ -30,6 +60,12 @@ ul {
 		margin: $section-margin;
 		font-size: $section-font-size;
 		cursor: pointer;
+		transition: all .4s ease;
+		transform: scale(.8);
+
+		&:hover {
+			transform: scale(1);
+		}
 
 		&:last-child {
 			background-color: #000;

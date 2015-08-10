@@ -4,9 +4,9 @@ angular.module('ourSiteApp')
   .directive('heightDirective', function () {
     return {
       restrict: 'A',
-      link: function (scope, element, attrs) {
+      link: function (scope, element) {
         // element.text('this is the heightDirective directive');
-        var width = document.documentElement.clientWidth;
+        // var width = document.documentElement.clientWidth;
         var height = document.documentElement.clientHeight;
 
         element.css({

@@ -9,6 +9,6 @@ angular.module('ourSiteApp')
     $rootScope.goPath = function(path) {
 
     	$location.path(path);
-    	
-    }
+
+    };
   });
