@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('ourSiteApp')
-  .controller('ModuleCtrl', function ($scope, $http, $modal, $log, Auth) {
+  .controller('ModuleCtrl', function ($scope, $http, $modal, $state, $location, $log, Auth) {
 
   	$scope.modules = [];
-  	$scope.isLoggedIn = Auth.isLoggedIn();
-  	// console.log($scope.isLoggedIn);
+  	$scope.isLoggedIn = Auth.isLoggedIn;
+  	$scope.currentUser = Auth.getCurrentUser;
 
     $http.get('/api/modules').success(function(res) {
 
@@ -13,8 +13,57 @@ angular.module('ourSiteApp')
 
     });
 
-    var login = function() {
-    	Auth.login({});
+    // $state.go($state.current, {}, {reload: true});
+
+    var register = function(user) {
+    	console.log(user);
+      // $scope.submitted = true;
+
+      // if(form.$valid) {
+        Auth.createUser({
+          name: user.name,
+          email: user.email,
+          password: user.pass
+        })
+        .then( function() {
+          // Account created, redirect to home
+          $state.go($state.current, {}, {reload: true});
+        })
+        .catch( function(err) {
+          err = err.data;
+          $scope.errors = {};
+
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err.errors, function(error, field) {
+            form[field].$setValidity('mongoose', false);
+            $scope.errors[field] = error.message;
+          });
+        });
+      // }
+    };
+
+    var login = function(user) {
+      // $scope.submitted = true;
+
+      // if(form.$valid) {
+        Auth.login({
+          email: user.email,
+          password: user.pass
+        })
+        .then( function() {
+          // Logged in, redirect to home
+          $state.go($state.current, {}, {reload: true});
+        })
+        .catch( function(err) {
+          $scope.errors.other = err.message;
+        });
+      // }
+    };
+
+    $scope.logout = function() {
+      Auth.logout();
+      console.log('you are logout.');
+      $state.go($state.current, {}, {reload: true});
     };
 
     $scope.openModal = function(type) {
@@ -30,14 +79,16 @@ angular.module('ourSiteApp')
 	    });
 
 	    modalInstance.result.then(function (user) {
-	    	console.log(user);
+	    	if (user.rePass) {
+	    		console.log(user);
+	    		register(user);
+	    	} else {
+          login(user);
+        }
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
-
-
-
   })
 	.controller('ModalInstanceCtrl', function ($scope, $modalInstance, type) {
 		var user = {};
@@ -51,11 +102,12 @@ angular.module('ourSiteApp')
 		}
 
 	  $scope.ok = function () {
-  		user.name = $scope.name;
+  		user.email = $scope.email;
   		user.pass = $scope.pass;
 
 	  	if (type === 'register') {
 	  		user.rePass = $scope.rePass;
+	  		user.name = $scope.name;
 	  	}
 
 	    $modalInstance.close(user);
