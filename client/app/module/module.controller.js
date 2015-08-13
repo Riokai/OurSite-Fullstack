@@ -7,13 +7,14 @@ angular.module('ourSiteApp')
   	$scope.isLoggedIn = Auth.isLoggedIn;
   	$scope.currentUser = Auth.getCurrentUser;
 
+    $scope.isEdit = false;
+    $scope.editText = '编辑';
+
     $http.get('/api/modules').success(function(res) {
 
     	$scope.modules = res;
 
     });
-
-    // $state.go($state.current, {}, {reload: true});
 
     var register = function(user) {
     	console.log(user);
@@ -79,7 +80,7 @@ angular.module('ourSiteApp')
 	    });
 
 	    modalInstance.result.then(function (user) {
-	    	if (user.rePass) {
+	    	if (user.name) {
 	    		console.log(user);
 	    		register(user);
 	    	} else {
@@ -89,6 +90,12 @@ angular.module('ourSiteApp')
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
+
+    $scope.toggleEdit = function() {
+      $scope.isEdit = !$scope.isEdit;
+
+      $scope.editText = '完成';
+    }
   })
 	.controller('ModalInstanceCtrl', function ($scope, $modalInstance, type) {
 		var user = {};

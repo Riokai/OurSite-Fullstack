@@ -2,7 +2,8 @@ $header-height: 75px;
 
 $section-width: 180px;
 $section-margin: 30px;
-$section-font-size: 20px;
+$section-font-size: 26px;
+// $section-font-size-hover: 28px;
 
 
 ul {
@@ -63,8 +64,19 @@ ul {
 		transition: all .4s ease;
 		transform: scale(.8);
 
-		&:hover {
+		&.edit {
+			animation-play-state: running;
+			animation-duration: 2s;
+			animation-name: shake-base;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease-in-out;
+
+		}
+
+		&.normal:hover {
+			animation-play-state: paused;
 			transform: scale(1);
+			animation-duration: inherit;
 		}
 
 		&:last-child {

@@ -15,7 +15,8 @@
     "angular-socket-io": "~0.6.0",
     "angular-ui-router": "~0.2.15",
     "normalize.css": "~3.0.3",
-    "angular-bootstrap": "~0.13.2"
+    "angular-bootstrap": "~0.13.2",
+    "csshake": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

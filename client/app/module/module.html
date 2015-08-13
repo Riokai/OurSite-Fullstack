@@ -11,7 +11,9 @@
 				 ng-hide="isLoggedIn()"
 				 ng-click="openModal('login')">登录</a>
 			<a href="" ng-show="isLoggedIn()">欢迎你, {{ currentUser().name }}</a>
-			<a href="" ng-show="isLoggedIn()">编辑</a>
+			<a href="" 
+				 ng-show="isLoggedIn()"
+				 ng-click="toggleEdit()">{{ editText }}</a>
 			<a href=""
 				 ng-show="isLoggedIn()"
 				 ng-click="logout()">退出</a>
@@ -21,10 +23,13 @@
 		<ul>
 			<li ng-repeat="module in modules"
 					ng-click="goPath(module.href)"
+					class="shake"
+					ng-class="{'normal': !isEdit, 'edit': isEdit}"
 					style="background-color:{{ module.color }}">
 				{{ module.name }}
 			</li>
-			<li>新增</li>
+			<li class="shake"
+					ng-class="{'normal': !isEdit, 'edit': isEdit}">新增</li>
 		</ul>
 	</div>
 </div>
