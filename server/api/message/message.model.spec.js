@@ -83,14 +83,19 @@ describe('Message Model', function() {
 
   	message.save(function(err, result) {
 
-  		Message.findByIdAndRemove(result._id, function(err) {
+  		// Message.findByIdAndRemove(result._id, function(err) {
 
-  			Message.find({}, function(err, messages) {
-  			  messages.should.have.length(0);
-  			  done();
-  			});
+  		// 	Message.find({}, function(err, messages) {
+  		// 	  messages.should.have.length(0);
+  		// 	  done();
+  		// 	});
 
-  		});
+  		// });
+
+      result.remove(function(err, result) {
+        should.exist(result);
+        done();
+      });
 
   	});
   });

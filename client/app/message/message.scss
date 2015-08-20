@@ -1,5 +1,6 @@
 .message {
 	width: 800px;
+	padding-top: 50px;
 
 	h2 {
 		padding-bottom: 10px;
@@ -13,6 +14,21 @@
 		margin-bottom: 10px; 
 		padding-bottom: 10px;
 		border-bottom: 1px solid #ddd;
+
+		.item-content {
+			margin-top: 10px;
+		}
+
+		.item-option {
+			margin-bottom: 10px;
+		}
+
+		.item-inner {
+			margin-top: -1px;
+			padding: 10px;
+			padding-bottom: 0;
+			border: 1px solid #fcbb90;
+		}
 	}
 
 	.info-time, .info-floor {
