@@ -1,0 +1,55 @@
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a href="/" class="navbar-brand">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span>Back</span>
+			</a>
+		</div>
+		<div class="navbar-title">
+			<h3 class="text-center">{{ title }}</h3>
+		</div>
+	</div>
+</div>
+
+<div class="container message">
+	<h2>最新留言</h2>
+	<ul class="message-list">
+		<li ng-repeat="item in data"
+				class="message-item">
+			<div class="item-head">
+				<div class="item info">
+					<span class="info-floor">{{ $index + 1 }}楼</span>
+					<span class="ng-hide">{{ item.from._id }}</span>
+					<span class="info-user">{{ item.from.name }}</span>
+					<span class="info-time">{{ item.createTime }}</span>
+					<span class="info-del pull-right" data-id="{{ item._id }}">&times;</span>
+				</div>
+				<div class="item-content">{{ item.content }}</div>
+				<div class="item-option text-right">
+					<a href="#" class="option-reply">回复</a>
+				</div>
+				<div class="inner-list" 
+						 ng-show="item.children"
+						 ng-repeat="chil in item.children">
+					<div class="item-inner">
+						<div class="item-info">
+							<span class="info-floor">{{ $index + 1 }}楼</span>
+							<span class="ng-hide">{{ chil.from._id }}</span>
+							<span class="info-user">{{ chil.from.name }}</span>
+							<span class="info-time">{{ chil.createTime }}</span>
+							<!-- <span class="info-del pull-right" data-id="{{ item._id }}">&times;</span> -->
+						</div>
+						<div class="item-content"
+								 ng-show="chil.to.name === item.from.name">{{ chil.content }}</div>
+						<div class="item-content"
+								 ng-show="chil.to.name !== item.from.name">回复给 {{ chil.to.name }}{{ chil.content }}</div>
+						<div class="item-option text-right">
+							<a href="#" class="option-reply">回复</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
