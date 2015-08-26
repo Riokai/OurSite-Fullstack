@@ -7,7 +7,7 @@ angular.module('ourSiteApp')
     $scope.data = [];
 
     $http.get('/api/messages').success(function(res) {
-
+    	console.log(res);
       $scope.data = res;
       $scope.len = res.length;
 

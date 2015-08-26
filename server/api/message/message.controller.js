@@ -11,6 +11,7 @@ exports.index = function(req, res) {
   // });
 
   Message.find({})
+         .populate('from')
          .sort({'meta.createAt':-1})
          .exec(function(err, messages) {
             if(err) { return handleError(res, err); }

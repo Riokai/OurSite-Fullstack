@@ -38,7 +38,7 @@ describe('GET /api/messages', function() {
       });
   });
 
-  it('登录后请求留言列表应该返回JSON', function (done) {
+  it('登录后应该返回留言列表', function (done) {
     var user = {
       email: 'zengkai@hotmail.com',
       nickname: 'Kai',

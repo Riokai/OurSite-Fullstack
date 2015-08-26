@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 var MessageSchema = new Schema({
   from: {
   	type: ObjectId,
-  	ref: 'user'
+  	ref: 'User'
   },
   content: String,
   createTime: {

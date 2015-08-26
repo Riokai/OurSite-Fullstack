@@ -25,7 +25,8 @@
 					<span class="info-time">{{ item.createTime }}</span>
 					<span class="info-del pull-right" data-id="{{ item._id }}">&times;</span>
 				</div>
-				<div class="item-content">{{ item.content }}</div>
+				<div class="item-content"
+						 ng-bind-html="item.content"></div>
 				<div class="item-option text-right">
 					<a href="#" class="option-reply">回复</a>
 				</div>
@@ -41,9 +42,13 @@
 							<!-- <span class="info-del pull-right" data-id="{{ item._id }}">&times;</span> -->
 						</div>
 						<div class="item-content"
-								 ng-show="chil.to.name === item.from.name">{{ chil.content }}</div>
+								 ng-show="chil.to.name === item.from.name"
+								 ng-bind-html="chil.content"></div>
 						<div class="item-content"
-								 ng-show="chil.to.name !== item.from.name">回复给 {{ chil.to.name }}{{ chil.content }}</div>
+								 ng-show="chil.to.name !== item.from.name">
+								 回复给 {{ chil.to.name }}
+								 <span ng-bind-html="chil.content"></span>
+						</div>
 						<div class="item-option text-right">
 							<a href="#" class="option-reply">回复</a>
 						</div>

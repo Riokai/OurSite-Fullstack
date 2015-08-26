@@ -31,7 +31,6 @@ angular.module('ourSiteApp', [
       responseError: function(response) {
         if(response.status === 401) {
           $location.path('/');
-          alert('请先登录！');
           // remove any stale tokens
           $cookieStore.remove('token');
           return $q.reject(response);
