@@ -1,5 +1,5 @@
 .message {
-	width: 800px;
+	// width: 800px;
 	padding-top: 50px;
 
 	h2 {
@@ -8,6 +8,22 @@
 		color: #d22222; 
 		font-weight: bold;
 		border-bottom: 2px solid #d22222;
+	}
+
+	&-content {
+		padding-bottom: 60px;
+
+		.info-time, .info-floor {
+			color: #888;
+		}
+
+		.info-user {
+			color: #326eb4;
+		}
+
+		.info-del {
+			cursor: pointer;
+		}
 	}
 
 	&-item {
@@ -31,11 +47,24 @@
 		}
 	}
 
-	.info-time, .info-floor {
-		color: #888;
-	}
+	&-footer	{
+		text-align: center;
+		padding: 10px 0;
+		// background-color: rgba(0, 0, 0, 0.6);
+		background-color: #ccc;
 
-	.info-user {
-		color: #326eb4;
+		button {
+			color: #0275d8;
+			border: 1px solid #0275d8;
+			border-radius: 4px;
+			background-color: #fff;
+			font-size: 16px;
+			padding: 6px 16px;
+
+			&:hover {
+				background-color: #0275d8;
+				color: #fff;
+			}
+		}
 	}
 }

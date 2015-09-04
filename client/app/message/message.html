@@ -1,60 +1,94 @@
-<div class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<a href="/" class="navbar-brand">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-				<span>Back</span>
-			</a>
-		</div>
-		<div class="navbar-title">
-			<h3 class="text-center">{{ title }}</h3>
+<div class="message">
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span>Back</span>
+				</a>
+			</div>
+			<div class="navbar-title">
+				<h3 class="text-center">{{ title }}</h3>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="container message">
-	<h2>最新留言</h2>
-	<ul class="message-list">
-		<li ng-repeat="item in data"
-				class="message-item">
-			<div class="item-head">
-				<div class="item info">
-					<span class="info-floor">{{ len - ($index + 1) }}楼</span>
-					<span class="ng-hide">{{ item.from._id }}</span>
-					<span class="info-user">{{ item.from.name }}</span>
-					<span class="info-time">{{ item.createTime }}</span>
-					<span class="info-del pull-right" data-id="{{ item._id }}">&times;</span>
-				</div>
-				<div class="item-content"
-						 ng-bind-html="item.content"></div>
-				<div class="item-option text-right">
-					<a href="#" class="option-reply">回复</a>
-				</div>
-				<div class="inner-list" 
-						 ng-show="item.children"
-						 ng-repeat="chil in item.children">
-					<div class="item-inner">
-						<div class="item-info">
-							<span class="info-floor">{{ $index + 1 }}#</span>
-							<span class="ng-hide">{{ chil.from._id }}</span>
-							<span class="info-user">{{ chil.from.name }}</span>
-							<span class="info-time">{{ chil.createTime }}</span>
-							<!-- <span class="info-del pull-right" data-id="{{ item._id }}">&times;</span> -->
-						</div>
-						<div class="item-content"
-								 ng-show="chil.to.name === item.from.name"
-								 ng-bind-html="chil.content"></div>
-						<div class="item-content"
-								 ng-show="chil.to.name !== item.from.name">
-								 回复给 {{ chil.to.name }}
-								 <span ng-bind-html="chil.content"></span>
-						</div>
-						<div class="item-option text-right">
-							<a href="#" class="option-reply">回复</a>
+	<div class="container message-content">
+		<h2>最新留言</h2>
+		<ul class="message-list">
+			<li ng-repeat="item in data"
+					class="message-item">
+				<div class="item-head">
+					<div class="item info">
+						<span class="info-floor">{{ len - ($index + 1) }}楼</span>
+						<span class="ng-hide">{{ item.from._id }}</span>
+						<span class="info-user">{{ item.from.name }}</span>
+						<span class="info-time">{{ item.createTime }}</span>
+						<span class="info-del pull-right"
+									ng-click="delMessage(item)">&times;</span>
+					</div>
+					<div class="item-content"
+							 ng-bind-html="item.content"></div>
+					<div class="item-option text-right">
+						<a href="#" class="option-reply">回复</a>
+					</div>
+					<div class="inner-list" 
+							 ng-show="item.children"
+							 ng-repeat="chil in item.children">
+						<div class="item-inner">
+							<div class="item-info">
+								<span class="info-floor">{{ $index + 1 }}#</span>
+								<span class="ng-hide">{{ chil.from._id }}</span>
+								<span class="info-user">{{ chil.from.name }}</span>
+								<span class="info-time">{{ chil.createTime }}</span>
+								<!-- <span class="info-del pull-right" data-id="{{ item._id }}">&times;</span> -->
+							</div>
+							<div class="item-content"
+									 ng-show="chil.to.name === item.from.name"
+									 ng-bind-html="chil.content"></div>
+							<div class="item-content"
+									 ng-show="chil.to.name !== item.from.name">
+									 回复给 {{ chil.to.name }}
+									 <span ng-bind-html="chil.content"></span>
+							</div>
+							<div class="item-option text-right">
+								<a href="#" class="option-reply">回复</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</li>
-	</ul>
+			</li>
+		</ul>
+	</div>
+
+	<div class="container-fluid navbar-fixed-bottom message-footer">
+		<button ng-click="openModal('addMessage')">写下留言</button>
+	</div>
 </div>
+
+<script type="text/ng-template" id="messageModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title">{{ modalTitle }}</h3>
+  </div>
+  <div class="modal-body">
+
+  	<div class="form-group row">
+      <label class="col-md-2 control-label">内容</label>
+      <div class="col-md-10">
+        <textarea id="addEmotion" 
+        					type="password" 
+        					name="message[content]" 
+        					rows="6" 
+        					autofocus="" 
+        					class="form-control"
+        					ng-model="content"></textarea>
+        <div class="addEmotion">表情</div>
+      </div>
+    </div>
+		
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">提交</button>
+    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+  </div>
+</script>
