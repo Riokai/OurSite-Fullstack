@@ -72,7 +72,7 @@ angular.module('ourSiteApp')
     	var modalInstance = $modal.open({
 	      // animation: $scope.animationsEnabled,
 	      templateUrl: 'userModalContent.html',
-	      controller: 'ModalInstanceCtrl',
+	      controller: 'UserModal',
 	      resolve: {
 	      	type: function() {
 	      		return type;
@@ -98,7 +98,7 @@ angular.module('ourSiteApp')
       $scope.editText = '完成';
     }
   })
-	.controller('ModalInstanceCtrl', function ($scope, $modalInstance, type) {
+	.controller('UserModal', function ($scope, $modalInstance, type) {
 		var user = {};
 
 		if (type === 'register') {
