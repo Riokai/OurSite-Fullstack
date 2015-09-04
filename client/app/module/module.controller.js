@@ -56,7 +56,8 @@ angular.module('ourSiteApp')
           $state.go($state.current, {}, {reload: true});
         })
         .catch( function(err) {
-          $scope.errors.other = err.message;
+          // $scope.errors.other = err.message;
+          alert(err.message);
         });
       // }
     };
