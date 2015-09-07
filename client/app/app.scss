@@ -25,6 +25,10 @@ ul, li, ol {
 	list-style: none;
 }
 
+button {
+  outline: none;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';

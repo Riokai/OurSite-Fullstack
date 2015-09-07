@@ -82,7 +82,6 @@ angular.module('ourSiteApp')
 
 	    modalInstance.result.then(function (user) {
 	    	if (user.name) {
-	    		console.log(user);
 	    		register(user);
 	    	} else {
           login(user);
@@ -95,7 +94,11 @@ angular.module('ourSiteApp')
     $scope.toggleEdit = function() {
       $scope.isEdit = !$scope.isEdit;
 
-      $scope.editText = '完成';
+      if ($scope.isEdit) {
+        $scope.editText = '完成';
+      } else {
+        $scope.editText = '编辑';
+      }
     }
   })
 	.controller('UserModal', function ($scope, $modalInstance, type) {
